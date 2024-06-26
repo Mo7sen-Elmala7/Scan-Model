@@ -1,1 +1,2 @@
-chmod +x start.sh
+#!/bin/bash
+python3 app.py
