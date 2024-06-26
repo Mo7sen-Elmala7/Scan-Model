@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition</title>
+    <style>
+        video::-internal-media-controls-overlay-cast-button {
+            display: none;
+        }
+        video::-webkit-media-controls {
+            display: none;
+        }
+        video::-webkit-media-controls-enclosure {
+            display:none;
+        }
+        video::-webkit-media-controls-panel {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="camera">
+        <img src="{{ url_for('video_feed') }}" alt="Video Feed" id="video_feed">
+    </div>
+    <div id="video_player" style="display: none;">
+        <video id="video" width="640" height="480" autoplay></video>
+    </div>
+    <button id="startScan" onclick="startScan()">Start Scan</button>
+
+    <script>
+        let scanning = false;
+
+        function startScan() {
+            if (!scanning) {
+                scanning = true;
+                fetch('/scan_face', {method: 'POST'})
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.video_path) {
+                            document.getElementById('camera').style.display = 'none';
+                            document.getElementById('video_player').style.display = 'block';
+                            let video = document.getElementById('video');
+                            video.src = '/' + data.video_path;
+                            video.play();
+                            video.onended = () => {
+                                document.getElementById('camera').style.display = 'block';
+                                document.getElementById('video_player').style.display = 'none';
+                                scanning = false;
+                                fetch('/video_ended', {method: 'POST'});
+                            };
+                        }
+                    });
+            }
+        }
+
+        // Automatically start scanning on page load
+        window.onload = startScan;
+    </script>
+</body>
+</html>
