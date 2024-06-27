@@ -1,5 +1,7 @@
 #!/bin/bash
-apt-get update
-apt-get install -y cmake
-pip3 install --upgrade pip
-pip3 install -r requirements.txt
+
+# Install CMake
+pip install cmake
+
+# Install other dependencies
+pip install -r requirements.txt
