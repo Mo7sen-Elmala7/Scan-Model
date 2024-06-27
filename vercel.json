@@ -1,20 +1,14 @@
 {
+  "version": 2,
   "builds": [
     {
       "src": "app.py",
       "use": "@vercel/python",
       "config": {
-        "zeroConfig": true
+        "maxLambdaSize": "50mb",
+        "runtime": "python3.7"
       }
     }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/app.py"
-    }
-  ],
-  "build": {
-    "command": "bash build.sh"
-  }
+  "buildCommand": "./build.sh"
 }
