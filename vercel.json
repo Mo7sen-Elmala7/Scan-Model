@@ -1,25 +1,17 @@
 {
-  "version": 2,
-  "public": true,
-  "alias": "portfolio-2",
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/.*",
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-        "Access-Control-Allow-Headers": "X-Requested-With,Content-Type,Authorization"
+    "version": 2,
+    "builds": [
+      {
+        "src": "index.html",
+        "use": "@vercel/static"
       },
-      "dest": "/index.html"
-    }
-  ],
-  "features": {
-    "stablePrefix": true
+      {
+        "src": "app.py",
+        "use": "@vercel/python",
+        "config": {
+          "runtime": "python3.7"
+        }
+      }
+    ]
   }
-}
+  
