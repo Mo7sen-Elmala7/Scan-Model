@@ -5,14 +5,9 @@
       "src": "app.py",
       "use": "@vercel/python",
       "config": {
-        "buildCommand": "./install.sh && pip install -r requirements.txt"
+        "zeroConfig": true
       }
     }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/app.py"
-    }
-  ]
+  "buildCommand": "apt-get update && apt-get install -y cmake && pip3 install --disable-pip-version-check --target . --upgrade -r requirements.txt"
 }
