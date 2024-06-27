@@ -3,11 +3,14 @@
   "builds": [
     {
       "src": "app.py",
-      "use": "@vercel/python",
-      "config": {
-        "zeroConfig": true
-      }
+      "use": "@vercel/python"
     }
   ],
-  "buildCommand": "apt-get update && apt-get install -y cmake && pip3 install --disable-pip-version-check --target . --upgrade -r requirements.txt"
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app.py"
+    }
+  ],
+  "installCommand": "pip install cmake && pip install -r requirements.txt"
 }
