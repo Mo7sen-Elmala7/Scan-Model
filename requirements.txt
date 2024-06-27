@@ -1,7 +1,6 @@
 ﻿Flask
 cmake
 dlib
-./wheels/dlib-19.24.99-cp312-cp312-win_amd64.whl
 opencv-python
 face_recognition
 numpy
