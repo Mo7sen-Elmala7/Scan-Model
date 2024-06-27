@@ -3,7 +3,14 @@
   "builds": [
     {
       "src": "app.py",
-      "use": "@vercel/python"
+      "use": "@vercel/python",
+      "config": {
+        "runtime": "python3.7"
+      }
+    },
+    {
+      "src": "templates/index.html",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -11,6 +18,5 @@
       "src": "/(.*)",
       "dest": "app.py"
     }
-  ],
-  "installCommand": "pip install cmake && pip install -r requirements.txt"
+  ]
 }
