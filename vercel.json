@@ -3,12 +3,8 @@
   "builds": [
     {
       "src": "app.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "50mb",
-        "runtime": "python3.7"
-      }
+      "use": "@vercel/python"
     }
   ],
-  "buildCommand": "./build.sh"
+  "installCommand": "apt-get update && apt-get install -y cmake && pip install -r requirements.txt"
 }
