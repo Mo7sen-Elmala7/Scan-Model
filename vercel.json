@@ -3,7 +3,10 @@
   "builds": [
     {
       "src": "app.py",
-      "use": "@vercel/python"
+      "use": "@vercel/python",
+      "config": {
+        "buildCommand": "./install.sh && pip install -r requirements.txt"
+      }
     }
   ],
   "routes": [
@@ -11,8 +14,5 @@
       "src": "/(.*)",
       "dest": "/app.py"
     }
-  ],
-  "files": [
-    "wheels/dlib-19.24.99-cp312-cp312-win_amd64.whl"
   ]
 }
