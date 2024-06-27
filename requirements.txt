@@ -1,6 +1,6 @@
-﻿Flask
+Flask
 cmake
-dlib
+dlib @ file://./dlib/dlib-19.21.1-cp37-cp37m-win_amd64.whl
 opencv-python
 face_recognition
 numpy
